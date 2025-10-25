@@ -10,43 +10,45 @@ P    | PAHA         | RP. 1500
 """
 )
 
-qty_types = int(input("Banyak jenis : "))
+jml_tipe = int(input("Banyak jenis : "))
 q = 1
 
-result = """
+hasil = """
 GEROBAK FRIED CHICKEN
 =============================================================
 NO | JENIS POTONG | HARGA SATUAN | BANYAK BELI | JUMLAH HARGA
 =============================================================
 """
 
-while q <= qty_types:
+while q <= jml_tipe:
     print(f"Jenis ke-{q}")
-    code_cutting = input("Kode Potong [D/P/S] : ").upper()
-    qty_cutting = int(input("Banyak Potong : "))
+    kode_pemotongan = input("Kode Potong [D/P/S] : ").upper()
+    jumlah_potong = int(input("Banyak Potong : "))
 
-    if code_cutting == "D":
-        price = 2500
-        type_cutting = "DADA"
-    elif code_cutting == "S":
-        price = 2000
-        type_cutting = "SAYAP"
-    elif code_cutting == "P":
-        price = 1500
-        type_cutting = "PAHA"
+    if kode_pemotongan == "D":
+        harga = 2500
+        jenis_potong = "DADA"
+    elif kode_pemotongan == "S":
+        harga = 2000
+        jenis_potong = "SAYAP"
+    elif kode_pemotongan == "P":
+        harga = 1500
+        jenis_potong = "PAHA"
     else:
         print("salah input kode potong!!")
 
-    subtotal = price * qty_cutting
-    result += f"{q:<4} {type_cutting:<15} {price:<15,} {qty_cutting:<13} {subtotal:,}\n"
+    subtotal = harga * jumlah_potong
+    hasil += (
+        f"{q:<4} {jenis_potong:<15} {harga:<15,} {jumlah_potong:<13} {subtotal:,}\n"
+    )
     q += 1
 
-total_subtotal = subtotal * qty_types
-tax = int(total_subtotal * 0.1)
-total_payment = int(total_subtotal + tax)
+total_subtotal = subtotal * jml_tipe
+pajak = int(total_subtotal * 0.1)
+total_pembayaran = int(total_subtotal + pajak)
 
-print(result)
+print(hasil)
 print("=" * 61)
 print(f"Jumlah Bayar : Rp. {total_subtotal:,}")
-print(f"Pajak 10% : Rp. {tax:,}")
-print(f"Total Bayar : Rp. {total_payment:,}")
+print(f"Pajak 10% : Rp. {pajak:,}")
+print(f"Total Bayar : Rp. {total_pembayaran:,}")
